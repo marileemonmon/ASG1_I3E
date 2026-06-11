@@ -5,11 +5,13 @@ using UnityEngine.SocialPlatforms.Impl;
 public class PlayerScript : MonoBehaviour
 {   
     int score=0;
-    bool isMenuShowing = false;
+    [SerializeField]
+    private float interactDistance = 3f;
+    private GameObject currentgem;
 
     GameObject currentCollider;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void OnCollisionEnter(Collision collision)
+   /* void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.name.StartsWith("gem"))
         {
@@ -24,11 +26,11 @@ public class PlayerScript : MonoBehaviour
             print($"Stopped colliding with {currentCollider.name}.");
             currentCollider=null;
         }
-    }
+    }*/
     void OnInteract (InputValue value)
     {
         print($"Interacting with {currentCollider.name}");
-        if(currentCollider!=null)
+        /*if(currentCollider!=null)
         {
             var collectible = currentCollider.GetComponent<Collectible>();
             if(collectible!=null)
@@ -38,9 +40,21 @@ public class PlayerScript : MonoBehaviour
                 print($"Current score: {score}");
                 collectible.Collect();
             }
+        }*/
+        if (currentgem!=null)
+        {
+            var collectible = currentgem.GetComponent<Collectible>();
+            if(collectible==currentgem.GetComponent<Collectible>())
+            {
+                print($"Interacting with {currentgem.name}");
+                score+=collectible.score;
+                print($"Current score: {score}");
+                collectible.Collect();
+            }
         }
+
     }
-       void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.name=="FinishLine"&&score==27)
         {
@@ -49,6 +63,30 @@ public class PlayerScript : MonoBehaviour
         else
         {
             print($"You have not collected all the points!");
+        }
+    }
+    private void Update()
+    {
+        {
+            RaycastHit hit;
+
+            if(Physics.Raycast(
+                transform.position,
+                transform.forward,
+                out hit,
+                interactDistance))
+            {
+               if(hit.collider.CompareTag("Gem"))
+               {
+                   print($"Looking at {hit.collider.gameObject.name}");
+                   currentgem=hit.collider.gameObject;
+               }
+                else
+                {
+                     currentgem=null;
+                }
+            }
+
         }
     }
 
