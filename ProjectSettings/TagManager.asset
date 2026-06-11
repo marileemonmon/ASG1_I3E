@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - Gem
+  - KeyCard
   layers:
   - Default
   - TransparentFX
