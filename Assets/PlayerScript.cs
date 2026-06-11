@@ -77,6 +77,23 @@ public class PlayerScript : MonoBehaviour
                 print($"You have not collected all the points!");
             }
         }
+        if(other.gameObject.CompareTag("Blade"))
+        {
+            var blade = other.gameObject.GetComponent<BladeScript>();
+            var playerStats = GetComponent<PlayerStats>();
+            playerStats.TakeDamage(blade.damage);
+        }
+        else
+        {
+            if(other.gameObject.name=="FinishLine"&&score==27)
+            {
+                print($"Final score: {score} Congratulations! You win!");
+            }
+            else
+            {
+                print($"You have not collected all the points!");
+            }
+        }
     }
     private void Update()
     {
