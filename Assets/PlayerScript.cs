@@ -52,13 +52,22 @@ public class PlayerScript : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name=="FinishLine"&&score==27)
+        if(other.gameObject.CompareTag("Water"))
         {
-            print($"Final score: {score} Congratulations! You win!");
+            var water = other.gameObject.GetComponent<WaterScript>();
+            var playerStats = GetComponent<PlayerStats>();
+            playerStats.TakeDamage(water.damage);
         }
         else
         {
-            print($"You have not collected all the points!");
+            if(other.gameObject.name=="FinishLine"&&score==27)
+            {
+                print($"Final score: {score} Congratulations! You win!");
+            }
+            else
+            {
+                print($"You have not collected all the points!");
+            }
         }
     }
     private void Update()
