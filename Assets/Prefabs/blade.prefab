@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6760509841958016537}
   - component: {fileID: 3378886293780862419}
   - component: {fileID: 2603752991185812461}
+  - component: {fileID: -5674249700328884968}
   m_Layer: 0
   m_Name: blade
   m_TagString: Untagged
@@ -125,3 +126,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a235c1037ed9a845924261cfd1cf3e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BladeRotationScript
+--- !u!114 &-5674249700328884968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7074097555579108705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1b53001ac54c74f9151192c5b1e07f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
