@@ -5,9 +5,11 @@ using UnityEngine.SocialPlatforms.Impl;
 public class PlayerScript : MonoBehaviour
 {   
     int score=0;
+    int keycards=0;
     [SerializeField]
     private float interactDistance = 3f;
     private GameObject currentgem;
+    private GameObject currentkeycard;
     public AudioSource audioSource;
 
     GameObject currentCollider;
@@ -22,6 +24,22 @@ public class PlayerScript : MonoBehaviour
                 score+=collectible.score;
                 print($"Current score: {score}");
                 collectible.Collect();
+                //Play the coin collect sound
+                if (audioSource != null)
+                {
+                    audioSource.Play();
+                }
+
+        
+        }
+        if (currentkeycard!=null)
+        {
+            var keycard = currentkeycard.GetComponent<Collectible>();
+                
+                print($"Interacting with {currentkeycard.name}");
+                keycards++;
+                print($"Current keycards: {keycards}");
+                keycard.Collect();
                 //Play the coin collect sound
                 if (audioSource != null)
                 {
@@ -62,6 +80,15 @@ public class PlayerScript : MonoBehaviour
                 else
                 {
                      currentgem=null;
+                }
+                if (hit.collider.CompareTag("KeyCard"))
+                {
+                    print($"Looking at {hit.collider.gameObject.name}");
+                    currentkeycard=hit.collider.gameObject;
+                }
+                else
+                {
+                     currentkeycard=null;
                 }
             }
 
