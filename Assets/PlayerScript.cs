@@ -10,6 +10,7 @@ public class PlayerScript : MonoBehaviour
     private float interactDistance = 3f;
     private GameObject currentgem;
     private GameObject currentkeycard;
+    private GameObject currentdoor;
     public AudioSource audioSource;
 
     GameObject currentCollider;
@@ -46,6 +47,14 @@ public class PlayerScript : MonoBehaviour
                     audioSource.Play();
                 }
 
+        
+        }
+        if (currentdoor!=null)
+        {
+            var door = currentdoor.GetComponent<DoorScript>();
+                
+                print($"Interacting with {currentdoor.name}");
+                door.Interact();
         
         }
 
