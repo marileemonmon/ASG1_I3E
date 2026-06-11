@@ -8,9 +8,9 @@ public class PlayerScript : MonoBehaviour
     int keycards=0;
     [SerializeField]
     private float interactDistance = 3f;
-    private GameObject currentgem;
-    private GameObject currentkeycard;
-    private GameObject currentdoor;
+    [SerializeField] private GameObject currentgem;
+    [SerializeField] private GameObject currentkeycard;
+    [SerializeField] private GameObject currentdoor;
     public AudioSource audioSource;
 
     GameObject currentCollider;
@@ -35,7 +35,7 @@ public class PlayerScript : MonoBehaviour
         }
         if (currentkeycard!=null)
         {
-            var keycard = currentkeycard.GetComponent<Collectible>();
+            var keycard = currentkeycard.GetComponent<KeyCardCollect>();
                 
                 print($"Interacting with {currentkeycard.name}");
                 keycards++;
@@ -54,10 +54,9 @@ public class PlayerScript : MonoBehaviour
             var door = currentdoor.GetComponent<DoorScript>();
                 
                 print($"Interacting with {currentdoor.name}");
-                door.Interact();
+                door.open();
         
         }
-
     }
     void OnTriggerEnter(Collider other)
     {
