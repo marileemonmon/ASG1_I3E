@@ -107,6 +107,15 @@ public class PlayerScript : MonoBehaviour
                 {
                      currentkeycard=null;
                 }
+                if (hit.collider.CompareTag("Door"))
+                {
+                    print($"Looking at {hit.collider.gameObject.name}");
+                    currentdoor=hit.collider.gameObject;
+                }
+                else
+                {
+                     currentdoor=null;
+                }
             }
 
         }
