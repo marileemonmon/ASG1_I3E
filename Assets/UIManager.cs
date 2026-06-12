@@ -13,5 +13,9 @@ public class UIManager : MonoBehaviour
     public void ToggleMenu()
     {
         MenuPanel.SetActive(!MenuPanel.activeSelf);
+        Cursor.visible = MenuPanel.activeSelf;
+        Cursor.lockState = MenuPanel.activeSelf ? 
+                            CursorLockMode.None : 
+                            CursorLockMode.Locked;
     }
 }
