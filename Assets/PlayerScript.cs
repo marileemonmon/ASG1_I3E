@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 using UnityEngine.InputSystem;
 using UnityEngine.SocialPlatforms.Impl;
 
@@ -14,6 +15,7 @@ public class PlayerScript : MonoBehaviour
     private GameObject currentkeycard;
     private GameObject currentdoor;
     public AudioSource audioSource;
+    public TMP_Text scoreText;
 
     GameObject currentCollider;
        void OnInteract (InputValue value)
