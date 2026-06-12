@@ -13,6 +13,12 @@ public class UIManager : MonoBehaviour
     public GameObject WinPanel;
     [SerializeField]
     public GameObject GameOverPanel;
+    void Start()
+    {
+        MenuPanel.SetActive(false);
+        WinPanel.SetActive(false);
+        GameOverPanel.SetActive(false);
+    }
     public void UpdateScore(int score)
     {
         scoreText.text = $"Score: {score}/26";
@@ -32,6 +38,10 @@ public class UIManager : MonoBehaviour
     public void Win()
     {
         WinPanel.SetActive(!WinPanel.activeSelf);
+        Cursor.visible = WinPanel.activeSelf;
+        Cursor.lockState = WinPanel.activeSelf ? 
+                            CursorLockMode.None : 
+                            CursorLockMode.Locked;
     }
     public void UpdateScoreText(int score)
     {
@@ -41,6 +51,10 @@ public class UIManager : MonoBehaviour
     public void GameOver()
     {
         GameOverPanel.SetActive(!GameOverPanel.activeSelf);
+        Cursor.visible = GameOverPanel.activeSelf;
+        Cursor.lockState = GameOverPanel.activeSelf ? 
+                            CursorLockMode.None : 
+                            CursorLockMode.Locked;
     }
     public void UpdateGameOverScoreText(int score)
     {

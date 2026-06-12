@@ -15,6 +15,7 @@ public class PlayerScript : MonoBehaviour
     private GameObject currentkeycard;
     private GameObject currentdoor;
     public AudioSource audioSource;
+    [SerializeField]
     public UIManager MyUIManager;
 
 
@@ -147,10 +148,10 @@ public class PlayerScript : MonoBehaviour
     private void Update()
     {
     }
-    void OnGameOver(InputValue value)
+    /*void OnGameOver(InputValue value)
     {
         MyUIManager.GameOver();
-    }
+    }*/
 
 
 }
