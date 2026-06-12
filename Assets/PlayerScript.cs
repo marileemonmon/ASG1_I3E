@@ -55,7 +55,10 @@ public class PlayerScript : MonoBehaviour
                 
                 print($"Interacting with {currentdoor.name}");
                 door.open();
-        
+                if (audioSource != null)
+                {
+                    audioSource.Play();
+                }        
         }
     }
     void OnTriggerEnter(Collider other)
@@ -68,32 +71,26 @@ public class PlayerScript : MonoBehaviour
         }
         else
         {
-            if(other.gameObject.name=="FinishLine"&&score==27)
+            if(other.gameObject.CompareTag("Blade"))
             {
-                print($"Final score: {score} Congratulations! You win!");
+                print("Player hit by blade!");
+                var blade = other.gameObject.GetComponent<BladeScript>();
+                var playerStats = GetComponent<PlayerStats>();
+                playerStats.TakeDamage(blade.damage);
             }
             else
             {
-                print($"You have not collected all the points!");
-            }
+                if(other.gameObject.name=="FinishLine"&&score==27)
+                {
+                    print($"Final score: {score} Congratulations! You win!");
+                }
+                else
+                {
+                    print($"You have not collected all the points!");
+                }
         }
-        if(other.gameObject.CompareTag("Blade"))
-        {
-            var blade = other.gameObject.GetComponent<BladeScript>();
-            var playerStats = GetComponent<PlayerStats>();
-            playerStats.TakeDamage(blade.damage);
         }
-        else
-        {
-            if(other.gameObject.name=="FinishLine"&&score==27)
-            {
-                print($"Final score: {score} Congratulations! You win!");
-            }
-            else
-            {
-                print($"You have not collected all the points!");
-            }
-        }
+
     }
     private void Update()
     {

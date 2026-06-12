@@ -8,6 +8,8 @@ TagManager:
   - Gem
   - KeyCard
   - Water
+  - Door
+  - Blade
   layers:
   - Default
   - TransparentFX
