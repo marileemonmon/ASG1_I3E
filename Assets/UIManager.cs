@@ -6,9 +6,11 @@ public class UIManager : MonoBehaviour
 {
     public TMP_Text scoreText;
     public TMP_Text scoreTextGameOver;
+    public TMP_Text scoreTextWin;
 
     public GameObject MenuPanel;
     public GameObject WinPanel;
+    public GameObject GameOverPanel;
     public void UpdateScore(int score)
     {
         scoreText.text = $"Score: {score}/26";
@@ -31,7 +33,16 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateScoreText(int score)
     {
-        scoreTextGameOver.text = $"Congratulations! You Win!" + 
+        scoreTextWin.text = $"Congratulations! You Win!" + 
+                                $"\nFinal Score: {score}/26";
+    }
+    public void GameOver()
+    {
+        GameOverPanel.SetActive(!GameOverPanel.activeSelf);
+    }
+    public void UpdateGameOverScoreText(int score)
+    {
+        scoreTextGameOver.text = $"Game Over!" + 
                                 $"\nFinal Score: {score}/26";
     }
 }
