@@ -144,5 +144,10 @@ public class PlayerScript : MonoBehaviour
     private void Update()
     {
     }
+    void GameOver(InputValue value)
+    {
+        
+        MyUIManager.GameOver();
+    }
 
 }

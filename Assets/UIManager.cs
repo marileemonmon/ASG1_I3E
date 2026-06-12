@@ -1,11 +1,13 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
     public TMP_Text scoreText;
 
     public GameObject MenuPanel;
+    public GameObject GameOverPanel;
     public void UpdateScore(int score)
     {
         scoreText.text = $"Score: {score}/26";
@@ -17,5 +19,13 @@ public class UIManager : MonoBehaviour
         Cursor.lockState = MenuPanel.activeSelf ? 
                             CursorLockMode.None : 
                             CursorLockMode.Locked;
+    }
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void GameOver()
+    {
+        GameOverPanel.SetActive(!GameOverPanel.activeSelf);
     }
 }
