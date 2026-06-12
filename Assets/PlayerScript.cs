@@ -124,10 +124,7 @@ public class PlayerScript : MonoBehaviour
                 var blade = other.gameObject.GetComponent<BladeScript>();
                 var playerStats = GetComponent<PlayerStats>();
                 playerStats.TakeDamage(blade.damage);
-            }
-            else
-            {
-                if(other.gameObject.name=="FinishLine"&&score==5)
+                if(other.gameObject.CompareTag("FinishLine")&&score==5)
                 {
                     print($"Final score: {score} Congratulations! You win!");
                     MyUIManager.Win();
@@ -136,9 +133,12 @@ public class PlayerScript : MonoBehaviour
                 {
                     print($"You have not collected all the gems!");
                 }
+            }
+            else
+            {
+                print("Nothing to interact with.");
+            }
         }
-        }
-
     }
     void OnMenu(InputValue value)
     {
@@ -146,6 +146,10 @@ public class PlayerScript : MonoBehaviour
     }
     private void Update()
     {
+    }
+    void OnGameOver(InputValue value)
+    {
+        MyUIManager.GameOver();
     }
 
 

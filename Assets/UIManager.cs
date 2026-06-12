@@ -7,9 +7,11 @@ public class UIManager : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text scoreTextGameOver;
     public TMP_Text scoreTextWin;
-
+    [SerializeField]
     public GameObject MenuPanel;
+    [SerializeField]
     public GameObject WinPanel;
+    [SerializeField]
     public GameObject GameOverPanel;
     public void UpdateScore(int score)
     {

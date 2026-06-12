@@ -10,6 +10,7 @@ TagManager:
   - Water
   - Door
   - Blade
+  - FinishLine
   layers:
   - Default
   - TransparentFX

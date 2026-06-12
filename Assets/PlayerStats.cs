@@ -6,6 +6,7 @@ public class PlayerStats : MonoBehaviour
     public int MaxHealth;
     public int CurrentHealth;
     public HealthBar healthBar;
+    public UIManager MyUIManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,5 +18,10 @@ public class PlayerStats : MonoBehaviour
         CurrentHealth -= (int)amount;
         print("Player took " + amount + " damage. Current health: " + CurrentHealth);
         healthBar.SetSlider(CurrentHealth);
+        /*if (CurrentHealth <= 0)
+        {
+            print("Player has died.");
+            MyUIManager.GameOver();
+        }*/
     }
 }
