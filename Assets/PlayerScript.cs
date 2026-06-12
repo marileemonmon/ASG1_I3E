@@ -93,10 +93,7 @@ public class PlayerScript : MonoBehaviour
             print(door);
             print($"Interacting with {currentdoor.name}");
             door.open();
-            if (audioSource != null)
-            {
-                audioSource.Play();
-            }        
+      
         }
     }
     void OnTriggerEnter(Collider other)
