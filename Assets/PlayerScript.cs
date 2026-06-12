@@ -8,14 +8,52 @@ public class PlayerScript : MonoBehaviour
     int keycards=0;
     [SerializeField]
     private float interactDistance = 3f;
-    [SerializeField] private GameObject currentgem;
-    [SerializeField] private GameObject currentkeycard;
-    [SerializeField] private GameObject currentdoor;
+    private GameObject currentgem;
+    private GameObject currentkeycard;
+    private GameObject currentdoor;
     public AudioSource audioSource;
 
     GameObject currentCollider;
        void OnInteract (InputValue value)
     {
+
+        RaycastHit hit;
+
+        if(Physics.Raycast(
+            transform.position,
+            transform.forward,
+            out hit,
+            interactDistance))
+        {
+            Debug.Log(hit.collider.tag);
+            if(hit.collider.CompareTag("Gem"))
+            {
+                print($"Looking at {hit.collider.gameObject.name}");
+                currentgem=hit.collider.gameObject;
+            }
+            else
+            {
+                    currentgem=null;
+            }
+            if (hit.collider.CompareTag("KeyCard"))
+            {
+                print($"Looking at {hit.collider.gameObject.name}");
+                currentkeycard=hit.collider.gameObject;
+            }
+            else
+            {
+                    currentkeycard=null;
+            }
+            if (hit.collider.CompareTag("Door"))
+            {
+                print($"Looking at {hit.collider.gameObject.name}");
+                currentdoor=hit.collider.gameObject;
+            }
+            else
+            {
+                    currentdoor=null;
+            }
+        }
       
         if (currentgem!=null)
         {
@@ -33,7 +71,7 @@ public class PlayerScript : MonoBehaviour
 
         
         }
-        if (currentkeycard!=null)
+        else if (currentkeycard!=null)
         {
             var keycard = currentkeycard.GetComponent<KeyCardCollect>();
                 
@@ -49,16 +87,16 @@ public class PlayerScript : MonoBehaviour
 
         
         }
-        if (currentdoor!=null)
+        else if (currentdoor!=null)
         {
-            var door = currentdoor.GetComponent<DoorScript>();
-                
-                print($"Interacting with {currentdoor.name}");
-                door.open();
-                if (audioSource != null)
-                {
-                    audioSource.Play();
-                }        
+            DoorScript door = currentdoor.GetComponentInParent<DoorScript>();
+            print(door);
+            print($"Interacting with {currentdoor.name}");
+            door.open();
+            if (audioSource != null)
+            {
+                audioSource.Play();
+            }        
         }
     }
     void OnTriggerEnter(Collider other)
@@ -94,45 +132,6 @@ public class PlayerScript : MonoBehaviour
     }
     private void Update()
     {
-        {
-            RaycastHit hit;
-
-            if(Physics.Raycast(
-                transform.position,
-                transform.forward,
-                out hit,
-                interactDistance))
-            {
-               if(hit.collider.CompareTag("Gem"))
-               {
-                   print($"Looking at {hit.collider.gameObject.name}");
-                   currentgem=hit.collider.gameObject;
-               }
-                else
-                {
-                     currentgem=null;
-                }
-                if (hit.collider.CompareTag("KeyCard"))
-                {
-                    print($"Looking at {hit.collider.gameObject.name}");
-                    currentkeycard=hit.collider.gameObject;
-                }
-                else
-                {
-                     currentkeycard=null;
-                }
-                if (hit.collider.CompareTag("Door"))
-                {
-                    print($"Looking at {hit.collider.gameObject.name}");
-                    currentdoor=hit.collider.gameObject;
-                }
-                else
-                {
-                     currentdoor=null;
-                }
-            }
-
-        }
     }
 
 }

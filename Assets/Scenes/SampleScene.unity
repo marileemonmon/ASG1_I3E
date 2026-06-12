@@ -1771,9 +1771,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   interactDistance: 3
-  currentgem: {fileID: 0}
-  currentkeycard: {fileID: 0}
-  currentdoor: {fileID: 0}
   audioSource: {fileID: 325927722}
 --- !u!54 &325927721
 Rigidbody:
@@ -4385,7 +4382,7 @@ GameObject:
   - component: {fileID: 958771912}
   - component: {fileID: 958771911}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Door
   m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4494,8 +4491,8 @@ GameObject:
   m_Component:
   - component: {fileID: 962518118}
   - component: {fileID: 962518117}
-  - component: {fileID: 962518119}
   - component: {fileID: 962518120}
+  - component: {fileID: 962518119}
   m_Layer: 0
   m_Name: Door
   m_TagString: Door
@@ -4541,20 +4538,7 @@ Transform:
   - {fileID: 958771910}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &962518119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 962518116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0c674b9a54414943b2a5885874e2e0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DoorScript
-  audioSource: {fileID: 962518120}
---- !u!82 &962518120
+--- !u!82 &962518119
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4566,7 +4550,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 1196f976919a01749a806de18a9810db, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -4651,6 +4635,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &962518120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962518116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0c674b9a54414943b2a5885874e2e0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorScript
+  audioSource: {fileID: 0}
 --- !u!1001 &989063041
 PrefabInstance:
   m_ObjectHideFlags: 0
