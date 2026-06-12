@@ -7,6 +7,8 @@ public class PlayerScript : MonoBehaviour
     int score=0;
     int keycards=0;
     [SerializeField]
+    private GameObject playerCamera;
+    [SerializeField]
     private float interactDistance = 3f;
     private GameObject currentgem;
     private GameObject currentkeycard;
@@ -19,11 +21,8 @@ public class PlayerScript : MonoBehaviour
 
         RaycastHit hit;
 
-        if(Physics.Raycast(
-            transform.position,
-            transform.forward,
-            out hit,
-            interactDistance))
+        if(Physics.Raycast(playerCamera.transform.position,
+         playerCamera.transform.forward, out hit, interactDistance))
         {
             Debug.Log(hit.collider.tag);
             if(hit.collider.CompareTag("Gem"))

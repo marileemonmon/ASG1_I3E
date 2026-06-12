@@ -8,6 +8,7 @@ public class Collectible : MonoBehaviour
         //Destroy the coin after the sound has played
         Destroy(gameObject);
         return score;
+        
 
     }
 }
