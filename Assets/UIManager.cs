@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public TMP_Text scoreText;
+    public TMP_Text scoreTextGameOver;
 
     public GameObject MenuPanel;
-    public GameObject GameOverPanel;
+    public GameObject WinPanel;
     public void UpdateScore(int score)
     {
         scoreText.text = $"Score: {score}/26";
@@ -24,8 +25,12 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    public void GameOver()
+    public void Win()
     {
-        GameOverPanel.SetActive(!GameOverPanel.activeSelf);
+        WinPanel.SetActive(!WinPanel.activeSelf);
+    }
+    public void UpdateText(int score)
+    {
+        scoreTextGameOver.text = $"Final Score: {score}/26";
     }
 }

@@ -144,10 +144,12 @@ public class PlayerScript : MonoBehaviour
     private void Update()
     {
     }
-    void GameOver(InputValue value)
+    void Win(InputValue value)
     {
-        
-        MyUIManager.GameOver();
+        if(score == 26)
+        {
+            MyUIManager.Win();
+        }
     }
 
 }
