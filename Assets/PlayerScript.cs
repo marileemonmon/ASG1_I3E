@@ -15,10 +15,11 @@ public class PlayerScript : MonoBehaviour
     private GameObject currentkeycard;
     private GameObject currentdoor;
     public AudioSource audioSource;
-    public TMP_Text scoreText;
+    public UIManager MyUIManager;
+
 
     GameObject currentCollider;
-       void OnInteract (InputValue value)
+           void OnInteract (InputValue value)
     {
 
         RaycastHit hit;
@@ -69,6 +70,7 @@ public class PlayerScript : MonoBehaviour
                 {
                     audioSource.Play();
                 }
+                MyUIManager.UpdateScore(score);
 
         
         }
@@ -123,17 +125,21 @@ public class PlayerScript : MonoBehaviour
             }
             else
             {
-                if(other.gameObject.name=="FinishLine"&&score==27)
+                if(other.gameObject.name=="FinishLine"&&score==26)
                 {
                     print($"Final score: {score} Congratulations! You win!");
                 }
                 else
                 {
-                    print($"You have not collected all the points!");
+                    print($"You have not collected all the gems!");
                 }
         }
         }
 
+    }
+    void OnMenu(InputValue value)
+    {
+        MyUIManager.ToggleMenu();
     }
     private void Update()
     {
