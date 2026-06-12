@@ -31,6 +31,7 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateScoreText(int score)
     {
-        scoreTextGameOver.text = $"Final Score: {score}/26";
+        scoreTextGameOver.text = $"Congratulations! You Win!" + 
+                                $"\nFinal Score: {score}/26";
     }
 }
