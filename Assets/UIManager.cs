@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
     {
         WinPanel.SetActive(!WinPanel.activeSelf);
     }
-    public void UpdateText(int score)
+    public void UpdateScoreText(int score)
     {
         scoreTextGameOver.text = $"Final Score: {score}/26";
     }

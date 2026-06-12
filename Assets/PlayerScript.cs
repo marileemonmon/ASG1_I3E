@@ -71,6 +71,7 @@ public class PlayerScript : MonoBehaviour
                     audioSource.Play();
                 }
                 MyUIManager.UpdateScore(score);
+                MyUIManager.UpdateScoreText(score);
 
         
         }
@@ -125,9 +126,10 @@ public class PlayerScript : MonoBehaviour
             }
             else
             {
-                if(other.gameObject.name=="FinishLine"&&score==26)
+                if(other.gameObject.name=="FinishLine"&&score==5)
                 {
                     print($"Final score: {score} Congratulations! You win!");
+                    MyUIManager.Win();
                 }
                 else
                 {
@@ -144,12 +146,6 @@ public class PlayerScript : MonoBehaviour
     private void Update()
     {
     }
-    void Win(InputValue value)
-    {
-        if(score == 26)
-        {
-            MyUIManager.Win();
-        }
-    }
+
 
 }
