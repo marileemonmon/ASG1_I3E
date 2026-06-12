@@ -5,7 +5,7 @@ using UnityEngine.SocialPlatforms.Impl;
 public class PlayerScript : MonoBehaviour
 {   
     int score=0;
-    int keycards=0;
+    public int keycards=0;
     [SerializeField]
     private GameObject playerCamera;
     [SerializeField]
@@ -91,7 +91,14 @@ public class PlayerScript : MonoBehaviour
             DoorScript door = currentdoor.GetComponentInParent<DoorScript>();
             print(door);
             print($"Interacting with {currentdoor.name}");
-            door.open();
+            if( keycards>=door.DoorID)
+            {
+                door.open();
+            }
+            else
+            {
+                print($"You need {door.DoorID} keycards to open this door. You currently have {keycards} keycards.");
+            }
       
         }
     }
