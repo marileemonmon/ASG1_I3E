@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     public TMP_Text scoreTextGameOver;
     public TMP_Text scoreTextWin;
     public TMP_Text LockedDoorText;
+    public TMP_Text FinishText;
     [SerializeField]
     public GameObject MenuPanel;
     [SerializeField]
@@ -16,12 +17,15 @@ public class UIManager : MonoBehaviour
     public GameObject GameOverPanel;
     [SerializeField]
     public GameObject LockedDoorPanel;
+    [SerializeField]
+    public GameObject FinishPanel;
     void Start()
     {
         MenuPanel.SetActive(false);
         WinPanel.SetActive(false);
         GameOverPanel.SetActive(false);
         LockedDoorPanel.SetActive(false);
+        FinishPanel.SetActive(false);
     }
     public void UpdateScore(int score)
     {
@@ -78,5 +82,17 @@ public class UIManager : MonoBehaviour
     {
         
         LockedDoorText.text = $"You need {requiredKeycards} keycards to open this door. You currently have {currentKeycards} keycards.";
+    }
+    public void ShowFinishPanel()
+    {
+        FinishPanel.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+    public void UpdateFinishText(int score)
+    {
+        FinishText.text = $"Congratulations! You finished the game!" + 
+                                $"\nFinal Score: {score}/26"+
+                                $"\n Thank you for playing!";
     }
 }

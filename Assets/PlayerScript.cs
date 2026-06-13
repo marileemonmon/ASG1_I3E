@@ -101,6 +101,11 @@ public class PlayerScript : MonoBehaviour
             if( keycards>=door.DoorID)
             {
                 door.open();
+                if (door.DoorID==3)
+                {
+                    MyUIManager.ShowFinishPanel();
+                    MyUIManager.UpdateFinishText(score);
+                }
                 
             }
             else
