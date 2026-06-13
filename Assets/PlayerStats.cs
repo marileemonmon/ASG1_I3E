@@ -18,7 +18,7 @@ public class PlayerStats : MonoBehaviour
         CurrentHealth -= (int)amount;
         print("Player took " + amount + " damage. Current health: " + CurrentHealth);
         healthBar.SetSlider(CurrentHealth);
-        if (CurrentHealth == 0)
+        if (CurrentHealth <= 0)
         {
             print("Player has died.");
             MyUIManager.GameOver();

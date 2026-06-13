@@ -7,17 +7,21 @@ public class UIManager : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text scoreTextGameOver;
     public TMP_Text scoreTextWin;
+    public TMP_Text LockedDoorText;
     [SerializeField]
     public GameObject MenuPanel;
     [SerializeField]
     public GameObject WinPanel;
     [SerializeField]
     public GameObject GameOverPanel;
+    [SerializeField]
+    public GameObject LockedDoorPanel;
     void Start()
     {
         MenuPanel.SetActive(false);
         WinPanel.SetActive(false);
         GameOverPanel.SetActive(false);
+        LockedDoorPanel.SetActive(false);
     }
     public void UpdateScore(int score)
     {
@@ -60,5 +64,19 @@ public class UIManager : MonoBehaviour
     {
         scoreTextGameOver.text = $"Game Over!" + 
                                 $"\nFinal Score: {score}/26";
+    }
+    public void ShowLockedDoorPanel()
+    {
+        LockedDoorPanel.SetActive(true);
+        Invoke("HideLockedDoorPanel", 2f); // Hide after 2 seconds
+    }
+    private void HideLockedDoorPanel()
+    {
+        LockedDoorPanel.SetActive(false);
+    }
+    public void UpdateLockedDoorText(int requiredKeycards, int currentKeycards)
+    {
+        
+        LockedDoorText.text = $"You need {requiredKeycards} keycards to open this door. You currently have {currentKeycards} keycards.";
     }
 }

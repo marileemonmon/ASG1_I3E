@@ -101,10 +101,13 @@ public class PlayerScript : MonoBehaviour
             if( keycards>=door.DoorID)
             {
                 door.open();
+                
             }
             else
             {
                 print($"You need {door.DoorID} keycards to open this door. You currently have {keycards} keycards.");
+                MyUIManager.UpdateLockedDoorText(door.DoorID, keycards);
+                MyUIManager.ShowLockedDoorPanel();
             }
       
         }
@@ -116,30 +119,23 @@ public class PlayerScript : MonoBehaviour
             var water = other.gameObject.GetComponent<WaterScript>();
             var playerStats = GetComponent<PlayerStats>();
             playerStats.TakeDamage(water.damage);
+
         }
-        else
-        {
-            if(other.gameObject.CompareTag("Blade"))
+        if(other.gameObject.CompareTag("Blade"))
             {
                 print("Player hit by blade!");
                 var blade = other.gameObject.GetComponent<BladeScript>();
                 var playerStats = GetComponent<PlayerStats>();
                 playerStats.TakeDamage(blade.damage);
-                if(other.gameObject.CompareTag("FinishLine")&&score==5)
+            }
+        if(other.gameObject.CompareTag("FinishLine")&&score==5)
                 {
                     print($"Final score: {score} Congratulations! You win!");
                     MyUIManager.Win();
                 }
-                else
-                {
-                    print($"You have not collected all the gems!");
-                }
-            }
-            else
-            {
-                print("Nothing to interact with.");
-            }
-        }
+            
+    
+        
     }
     void OnMenu(InputValue value)
     {
