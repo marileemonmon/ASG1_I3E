@@ -74,6 +74,12 @@ public class PlayerScript : MonoBehaviour
                 MyUIManager.UpdateScore(score);
                 MyUIManager.UpdateScoreText(score);
                 MyUIManager.UpdateGameOverScoreText(score);
+                MyUIManager.UpdateFinishText(score);
+                if (score==26)
+                {
+                    MyUIManager.UpdateCongratsText(score);
+                    MyUIManager.ShowCongratsPanel();
+                }
 
         
         }

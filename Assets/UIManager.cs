@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public TMP_Text scoreTextWin;
     public TMP_Text LockedDoorText;
     public TMP_Text FinishText;
+    public TMP_Text CongratsText;
     [SerializeField]
     public GameObject MenuPanel;
     [SerializeField]
@@ -19,6 +20,9 @@ public class UIManager : MonoBehaviour
     public GameObject LockedDoorPanel;
     [SerializeField]
     public GameObject FinishPanel;
+    [SerializeField]
+    public GameObject CongratsPanel;
+
     void Start()
     {
         MenuPanel.SetActive(false);
@@ -26,6 +30,7 @@ public class UIManager : MonoBehaviour
         GameOverPanel.SetActive(false);
         LockedDoorPanel.SetActive(false);
         FinishPanel.SetActive(false);
+        CongratsPanel.SetActive(false);
     }
     public void UpdateScore(int score)
     {
@@ -94,5 +99,19 @@ public class UIManager : MonoBehaviour
         FinishText.text = $"Congratulations! You finished the game!" + 
                                 $"\nFinal Score: {score}/26"+
                                 $"\n Thank you for playing!";
+    }
+    public void ShowCongratsPanel()
+    {
+        CongratsPanel.SetActive(true);
+        Invoke("HideCongratsPanel", 2f); // Hide after 2 seconds
+    }
+    private void HideCongratsPanel()
+    {
+        CongratsPanel.SetActive(false);
+    }
+    public void UpdateCongratsText(int score)
+    {
+        CongratsText.text = $"Congratulations! You collected all the GEMS!" + 
+                                $"\nFinal Score: {score}/26";
     }
 }
