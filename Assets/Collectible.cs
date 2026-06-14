@@ -1,3 +1,8 @@
+/*
+* Author:Marilyn
+* Date:6/10/2026
+* Description: Script to collect the gems and add to the score
+*/
 using UnityEngine;
 
 public class Collectible : MonoBehaviour

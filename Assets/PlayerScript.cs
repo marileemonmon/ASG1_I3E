@@ -1,3 +1,8 @@
+/*
+* Author:Marilyn
+* Date:6/10/2026
+* Description: Script to handle player interactions and movement
+*/
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
@@ -66,13 +71,12 @@ public class PlayerScript : MonoBehaviour
                 score+=collectible.score;
                 print($"Current score: {score}");
                 collectible.Collect();
-                //Play the coin collect sound
+                //Play the gem collect sound
                 if (audioSource != null)
                 {
                     audioSource.Play();
                 }
                 MyUIManager.UpdateScore(score);
-                MyUIManager.UpdateScoreText(score);
                 MyUIManager.UpdateGameOverScoreText(score);
                 MyUIManager.UpdateFinishText(score);
                 if (score==26)
@@ -91,7 +95,7 @@ public class PlayerScript : MonoBehaviour
                 keycards++;
                 print($"Current keycards: {keycards}");
                 keycard.Collect();
-                //Play the coin collect sound
+                //Play the keycard collect sound
                 if (audioSource != null)
                 {
                     audioSource.Play();
@@ -106,7 +110,9 @@ public class PlayerScript : MonoBehaviour
             print($"Interacting with {currentdoor.name}");
             if( keycards>=door.DoorID)
             {
+                //Lock Door function
                 door.open();
+                //Lock door functionality if it's the final door to win
                 if (door.DoorID==3)
                 {
                     MyUIManager.ShowFinishPanel();
@@ -139,11 +145,6 @@ public class PlayerScript : MonoBehaviour
                 var playerStats = GetComponent<PlayerStats>();
                 playerStats.TakeDamage(blade.damage);
             }
-        if(other.gameObject.CompareTag("FinishLine")&&score==5)
-                {
-                    print($"Final score: {score} Congratulations! You win!");
-                    MyUIManager.Win();
-                }
             
     
         

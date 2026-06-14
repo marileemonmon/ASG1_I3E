@@ -1,3 +1,8 @@
+/*
+* Author:Marilyn
+* Date:6/11/2026
+* Description: Script to manage all the UI of my player interactions
+*/
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -25,8 +30,8 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        // Off all the panels at the start of the game
         MenuPanel.SetActive(false);
-        WinPanel.SetActive(false);
         GameOverPanel.SetActive(false);
         LockedDoorPanel.SetActive(false);
         FinishPanel.SetActive(false);
@@ -36,6 +41,7 @@ public class UIManager : MonoBehaviour
     {
         scoreText.text = $"Score: {score}/26";
     }
+    // Toggle the menu panel and lock/unlock the cursor when the menu is opened/closed
     public void ToggleMenu()
     {
         MenuPanel.SetActive(!MenuPanel.activeSelf);
@@ -44,23 +50,12 @@ public class UIManager : MonoBehaviour
                             CursorLockMode.None : 
                             CursorLockMode.Locked;
     }
+    // Restart the current scene to restart the game
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    public void Win()
-    {
-        WinPanel.SetActive(!WinPanel.activeSelf);
-        Cursor.visible = WinPanel.activeSelf;
-        Cursor.lockState = WinPanel.activeSelf ? 
-                            CursorLockMode.None : 
-                            CursorLockMode.Locked;
-    }
-    public void UpdateScoreText(int score)
-    {
-        scoreTextWin.text = $"Congratulations! You Win!" + 
-                                $"\nFinal Score: {score}/26";
-    }
+    //Toggle the game over panel and lock/unlock the cursor when the game over panel is opened/closed
     public void GameOver()
     {
         GameOverPanel.SetActive(!GameOverPanel.activeSelf);
@@ -74,11 +69,13 @@ public class UIManager : MonoBehaviour
         scoreTextGameOver.text = $"Game Over!" + 
                                 $"\nFinal Score: {score}/26";
     }
+    //Toggle the LockedDoorpanel
     public void ShowLockedDoorPanel()
     {
         LockedDoorPanel.SetActive(true);
         Invoke("HideLockedDoorPanel", 2f); // Hide after 2 seconds
     }
+    //Hide the locked door panel
     private void HideLockedDoorPanel()
     {
         LockedDoorPanel.SetActive(false);
@@ -88,6 +85,7 @@ public class UIManager : MonoBehaviour
         
         LockedDoorText.text = $"You need {requiredKeycards} keycards to open this door. You currently have {currentKeycards} keycards.";
     }
+    //Toggle the finish panel so the player game ends
     public void ShowFinishPanel()
     {
         FinishPanel.SetActive(true);
@@ -100,11 +98,13 @@ public class UIManager : MonoBehaviour
                                 $"\nFinal Score: {score}/26"+
                                 $"\n Thank you for playing!";
     }
+    //Toggle the congrats panel when the player collects all the gems.
     public void ShowCongratsPanel()
     {
         CongratsPanel.SetActive(true);
         Invoke("HideCongratsPanel", 2f); // Hide after 2 seconds
     }
+    //Hides the Congrats panel after 2 seconds
     private void HideCongratsPanel()
     {
         CongratsPanel.SetActive(false);

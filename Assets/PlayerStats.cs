@@ -1,3 +1,8 @@
+/*
+* Author:Marilyn
+* Date:6/12/2026
+* Description: Script to handle the player's health and damage, and to trigger the game over screen when the player dies
+*/
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour

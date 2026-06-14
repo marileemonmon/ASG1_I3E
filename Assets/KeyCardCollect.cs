@@ -1,3 +1,8 @@
+/*
+* Author:Marilyn
+* Date:6/11/2026
+* Description: Script to collect key cards
+*/
 using UnityEngine;
 
 public class KeyCardCollect : MonoBehaviour
@@ -6,7 +11,7 @@ public class KeyCardCollect : MonoBehaviour
     public int Keycards=1;
     public int Collect()
     {
-        //Destroy the coin after the sound has played
+        //Destroy the keycard after collection
         Destroy(gameObject);
         return Keycards;
 

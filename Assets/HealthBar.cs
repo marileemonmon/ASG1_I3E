@@ -1,3 +1,8 @@
+/*
+* Author:Marilyn
+* Date:6/12/2026
+* Description: Script to display the player's health
+*/
 using UnityEngine;
 using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
